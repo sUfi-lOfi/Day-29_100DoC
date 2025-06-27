@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 from PIL import Image,ImageTk
 import random
 import re
@@ -41,8 +42,7 @@ def add():
 
 
     else:
-        print("Fill all the Fields Correctly and Your email should be {}@gmail.com format")
-
+        messagebox.showinfo("Alert!","Fill all the Fields Correctly and Your email should be {}@gmail.com format")
 window = Tk()
 window.config(bg = "#FFFFFF")
 
