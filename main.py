@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
+import pyperclip
 from PIL import Image,ImageTk
 import random
 import re
@@ -18,6 +19,7 @@ def pass_gen():
     password.extend(random.sample(special_character, 3))
     password.extend(random.sample(number, 3))
     random.shuffle(password)
+    pyperclip.copy("".join(password))
     password_entry.delete(0,END)
     password_entry.insert(0,string="".join(password))
 #---------------Register the text ---------------#
@@ -57,7 +59,7 @@ canvas_image = canvas.create_image(150,150,image = img)
 
 #----------------------Enteries----------------#
 web_label = Label(text="Website:",font = ("FreeMono",14,"bold"),bg = "#FFFFFF")
-web_entry = Entry()
+web_entry = Entry(width=42)
 email_label = Label(text="Email/Username:",font = ("FreeMono",14,"bold"),bg = "#FFFFFF")
 email_entry = Entry()
 password_label = Label(text="Password:",font = ("FreeMono",14,"bold"),bg = "#FFFFFF")
@@ -66,15 +68,15 @@ password_entry = Entry()
 pass_gen_btn = Button(text = "Generate Password",bg = "#FFFFFF",font="FreeMono",width = 15,height = 1,command=pass_gen)
 add_btn = Button(text = "Add",font="FreeMono",bg = "#FFFFFF",command=add)
 #-------------------Grid Configuration---------------#
-canvas.grid(row = 1,column = 2)
-web_label.grid(row = 2 , column = 1)
-web_entry.grid(row = 2, column=2)
-email_label.grid(row = 3, column= 1)
-email_entry.grid(row = 3 , column = 2)
-password_label.grid(row = 4, column = 1)
-password_entry.grid(row = 4,column = 2)
-pass_gen_btn.grid(row = 4,column = 3)
-add_btn.grid(row = 5, column=2)
+canvas.grid(row = 0,column = 2)
+web_label.grid(row = 1 , column = 1)
+web_entry.grid(row = 1, column=2,columnspan=2)
+email_label.grid(row = 2, column= 1)
+email_entry.grid(row = 2 , column = 2)
+password_label.grid(row = 3, column = 1)
+password_entry.grid(row = 3,column = 2)
+pass_gen_btn.grid(row = 3,column = 3)
+add_btn.grid(row = 4, column=2)
 
 
 
